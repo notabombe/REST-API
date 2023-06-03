@@ -1,0 +1,17 @@
+version: "2"
+services:
+  api:
+      image: netresearch/docker-compose-api
+      ports:
+        - 5000:5000
+      volumes:
+        - /srv/docker-compose-api/compose/:/srv/docker-compose-api/compose/
+        - /var/run/docker.sock:/var/run/docker.sock
+        - /home/root/.docker/config.json:/root/.docker/config.json:ro
+      environment:
+        - COMPOSE_USERNAME=apiuser
+        - COMPOSE_PASSWORD=apipassword
+      working_dir: /srv/docker-compose-api/compose/
+      restart: always
+      network_mode: "bridge"
+
