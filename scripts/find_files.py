@@ -26,9 +26,8 @@ def get_readme_file(path):
 
     for file in os.listdir(path):
         if file.lower() == "readme.md" and os.path.isfile(os.path.join(path, file)):
-            file = open(os.path.join(path, file))
-            readme = file.read()
-            file.close()
+            with open(os.path.join(path, file)) as file:
+                readme = file.read()
             break
 
     return readme
@@ -42,9 +41,8 @@ def get_logo_file(path):
 
     for file in os.listdir(path):
         if file.lower() == "logo.png" and os.path.isfile(os.path.join(path, file)):
-            file = open(os.path.join(path, file))
-            logo = file.read()
-            file.close()
+            with open(os.path.join(path, file)) as file:
+                logo = file.read()
             break
 
     return logo

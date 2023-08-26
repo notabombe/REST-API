@@ -17,15 +17,15 @@ def git_pull():
     perform git pull
     """
     if git_repo:
-        logging.info('git pull ' + git_repo)
+        logging.info(f'git pull {git_repo}')
         Repo(GIT_YML_PATH).remote('origin').pull()
     else:
         logging.info('will not execute git pull: not a git repository')
 
 if git_repo:
-    logging.info('git repo: ' + git_repo)
+    logging.info(f'git repo: {git_repo}')
     if os.path.isdir(os.path.join(GIT_YML_PATH, '.git')):
         git_pull()
     else:
-        logging.info('git clone ' +  git_repo)
+        logging.info(f'git clone {git_repo}')
         Repo.clone_from(git_repo, GIT_YML_PATH)

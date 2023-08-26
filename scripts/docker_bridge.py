@@ -40,7 +40,7 @@ def container_restart(name):
     """
     create container
     """
-    logging.info('restart ' + name)
+    logging.info(f'restart {name}')
     return docker.from_env().containers.get(name).restart()
 
 def image_get(name):

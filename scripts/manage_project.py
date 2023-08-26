@@ -10,15 +10,13 @@ def manage(directory, yml, is_update):
     create or update docker compose project
     """
 
-    file_path = directory + "/docker-compose.yml"
+    file_path = f"{directory}/docker-compose.yml"
 
     if is_update:
-        rename(file_path, file_path + "." + str(int(round(time()))))
+        rename(file_path, f"{file_path}.{int(round(time()))}")
     else:
         makedirs(directory)
 
-    out_file = open(file_path, "w")
-    out_file.write(yml)
-    out_file.close()
-
+    with open(file_path, "w") as out_file:
+        out_file.write(yml)
     return file_path
